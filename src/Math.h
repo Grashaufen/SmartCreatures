@@ -30,6 +30,11 @@ namespace Math
 
 		return vec;
 	}
+
+	inline float sigmoid(float value)
+	{
+		return 1 / (1 + (float)exp((double)(-value)));
+	}
 }
 
 

@@ -3,6 +3,8 @@
 #include <thread>
 #include <SFML/Graphics.hpp>
 
+#include "NeuralNetworkCreature.h"
+
 #include "Creature.h"
 #include "CreatureStats.h"
 
@@ -14,8 +16,11 @@ int main(int argc, char** argv)
 	creature->Spawn(400.0f, 300.0f);
 
 	std::unique_ptr<CreatureStats> pStats(new CreatureStats(creature));
-
 	pStats->Create();
+
+	NeuralNetworkCreature nn;
+
+	nn.Create();
 
 	while(renderWindow.isOpen())
 	{

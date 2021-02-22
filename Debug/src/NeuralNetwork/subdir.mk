@@ -4,26 +4,26 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/Creature.cpp \
-../src/CreatureStats.cpp \
-../src/NeuralNetworkCreature.cpp \
-../src/main.cpp 
+../src/NeuralNetwork/Connection.cpp \
+../src/NeuralNetwork/InputNeuron.cpp \
+../src/NeuralNetwork/NeuralNetwork.cpp \
+../src/NeuralNetwork/WorkingNeuron.cpp 
 
 OBJS += \
-./src/Creature.o \
-./src/CreatureStats.o \
-./src/NeuralNetworkCreature.o \
-./src/main.o 
+./src/NeuralNetwork/Connection.o \
+./src/NeuralNetwork/InputNeuron.o \
+./src/NeuralNetwork/NeuralNetwork.o \
+./src/NeuralNetwork/WorkingNeuron.o 
 
 CPP_DEPS += \
-./src/Creature.d \
-./src/CreatureStats.d \
-./src/NeuralNetworkCreature.d \
-./src/main.d 
+./src/NeuralNetwork/Connection.d \
+./src/NeuralNetwork/InputNeuron.d \
+./src/NeuralNetwork/NeuralNetwork.d \
+./src/NeuralNetwork/WorkingNeuron.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/%.o: ../src/%.cpp
+src/NeuralNetwork/%.o: ../src/NeuralNetwork/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
 	g++ -I/usr/include/SFML -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
