@@ -7,16 +7,12 @@
 
 #include <iostream>
 #include "NeuralNetworkCreature.h"
+#include "Math.h"
 
 
 void NeuralNetworkCreature::Create()
 {
-	CreateInputNeurons(1);
-	CreateOutputNeurons(1);
-	CreateFullMesh();
 
-	m_inputNeurons[0]->SetValue(m_x);
-	std::cout << m_outputNeurons[0]->getValue();
 }
 
 void NeuralNetworkCreature::Update()

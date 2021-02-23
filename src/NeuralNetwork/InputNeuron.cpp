@@ -7,6 +7,11 @@
 
 #include "InputNeuron.h"
 
+InputNeuron::InputNeuron()
+{
+	m_value = 0.0f;
+}
+
 float InputNeuron::getValue()
 {
 	return m_value;

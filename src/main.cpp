@@ -8,8 +8,12 @@
 #include "Creature.h"
 #include "CreatureStats.h"
 
+#include <time.h>
+
 int main(int argc, char** argv)
 {
+	srand(time(nullptr));
+
 	sf::RenderWindow renderWindow(sf::VideoMode(800, 600), "SmartCreatures", sf::Style::Close);
 
 	std::shared_ptr<Creature> creature(new Creature());
@@ -17,10 +21,6 @@ int main(int argc, char** argv)
 
 	std::unique_ptr<CreatureStats> pStats(new CreatureStats(creature));
 	pStats->Create();
-
-	NeuralNetworkCreature nn;
-
-	nn.Create();
 
 	while(renderWindow.isOpen())
 	{

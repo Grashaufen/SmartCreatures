@@ -35,6 +35,11 @@ namespace Math
 	{
 		return 1 / (1 + (float)exp((double)(-value)));
 	}
+
+	inline float frand(float min, float max)
+	{
+		return min + (float)(rand()) / (float)(RAND_MAX/(max-min));
+	}
 }
 
 

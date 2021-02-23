@@ -13,8 +13,6 @@
 class NeuralNetworkCreature : public NeuralNetwork
 {
 private:
-	float m_x = -5.0f;
-
 public:
 	virtual void Create() override;
 	virtual void Update() override;

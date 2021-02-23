@@ -27,6 +27,8 @@ public:
 	virtual float getValue() override;
 
 	void AddConnection(Connection *pConnection);
+
+	std::vector<Connection*>& getConnections();
 };
 
 #endif /* NEURALNETWORK_WORKINGNEURON_H_ */

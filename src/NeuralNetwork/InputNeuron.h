@@ -13,6 +13,8 @@
 class InputNeuron : public Neuron
 {
 public:
+	InputNeuron();
+
 	virtual float getValue() override;
 	void SetValue(float value);
 };

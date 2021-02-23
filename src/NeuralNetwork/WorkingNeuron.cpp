@@ -44,3 +44,8 @@ void WorkingNeuron::AddConnection(Connection *pConnection)
 {
 	m_connections.push_back(pConnection);
 }
+
+std::vector<Connection*>& WorkingNeuron::getConnections()
+{
+	return m_connections;
+}
