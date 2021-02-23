@@ -22,6 +22,9 @@ int main(int argc, char** argv)
 	std::unique_ptr<CreatureStats> pStats(new CreatureStats(creature));
 	pStats->Create();
 
+	NeuralNetworkCreature nn;
+	nn.Create();
+
 	while(renderWindow.isOpen())
 	{
 		sf::Event event;

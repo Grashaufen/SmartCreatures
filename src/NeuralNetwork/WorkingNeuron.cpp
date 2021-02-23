@@ -30,7 +30,7 @@ void WorkingNeuron::getNetInput()
  */
 void WorkingNeuron::Activate()
 {
-	m_value = Math::sigmoid(m_value);
+	//m_value = Math::sigmoid(m_value);
 }
 
 float WorkingNeuron::getValue()

@@ -15,15 +15,17 @@
 class NeuralNetwork
 {
 protected:
-	std::vector<InputNeuron*>     m_inputNeurons;
-	std::vector<WorkingNeuron*>   m_hiddenNeurons;
-	std::vector<WorkingNeuron*>   m_outputNeurons;
+	std::vector<InputNeuron*>                 m_inputNeurons;
+	std::vector<std::vector<WorkingNeuron*>*> m_hiddenLayers;
+	std::vector<WorkingNeuron*>               m_outputNeurons;
 
 public:
 	virtual ~NeuralNetwork();
 
+	void CreateHiddenLayers(unsigned int amount);
+
 	void CreateInputNeurons(unsigned int amount);
-	void CreateHiddenNeurons(unsigned int amount);
+	void CreateHiddenNeurons(unsigned int layer, unsigned int amount);
 	void CreateOutputNeurons(unsigned int amount);
 
 	void CreateFullMesh();
