@@ -12,19 +12,24 @@
 
 void NeuralNetworkCreature::Create()
 {
-	CreateInputNeurons(2);
-	CreateHiddenLayers(2);
+	CreateInputNeurons(3);
+	CreateHiddenLayers(4);
 	CreateHiddenNeurons(0, 2);
-	CreateHiddenNeurons(1, 1);
-	CreateOutputNeurons(1);
+	CreateHiddenNeurons(1, 3);
+	CreateHiddenNeurons(2, 4);
+	CreateHiddenNeurons(3, 5);
+	CreateOutputNeurons(3);
 	CreateFullMesh();
 
-	m_hiddenLayers[1]->at(0)->getConnections().at(0)->SetWeight(0.5f);
+	Mutate(0.1f, -0.1f);
 
 	m_inputNeurons[0]->SetValue(20.0f);
 	m_inputNeurons[1]->SetValue(10.0f);
+	m_inputNeurons[2]->SetValue(1.0f);
 
 	std::cout << m_outputNeurons[0]->getValue() << std::endl;
+	std::cout << m_outputNeurons[1]->getValue() << std::endl;
+	std::cout << m_outputNeurons[2]->getValue() << std::endl;
 }
 
 void NeuralNetworkCreature::Update()

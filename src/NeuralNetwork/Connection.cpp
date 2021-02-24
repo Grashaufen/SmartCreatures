@@ -6,11 +6,12 @@
  */
 
 #include "Connection.h"
+#include "../Math.h"
 
 Connection::Connection(Neuron *pNeuron)
 {
 	m_pNeuron = pNeuron;
-	m_weight = 1.0f;
+	m_weight = Math::frand(-0.5f, 0.5f);
 }
 
 float Connection::getWeight()

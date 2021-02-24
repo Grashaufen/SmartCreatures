@@ -16,33 +16,33 @@
 class Creature
 {
 private:
-	float m_radius 	= 32.0f;
-	bool m_isAlive = true;
+	float m_radius 	     = 32.0f;
+	bool m_isAlive       = true;
 
-	float m_maxEnergy		= 10000.0f;
-	float m_energy 			= 5000.0f;
+	float m_maxEnergy    = 10000.0f;
+	float m_energy       = 5000.0f;
 
-	float m_speedCost 		= 1.0f;
-	float m_visionCost 		= 2.0f;
-	float m_strengthCost 	= 3.0f;
+	float m_speedCost    = 1.0f;
+	float m_visionCost   = 2.0f;
+	float m_strengthCost = 3.0f;
 
-	float m_totalMaximum	= 10.0f;
-	float m_maxSpeed		= 0.0f;
-	float m_maxVision		= 0.0f;
-	float m_maxStrength		= 0.0f;
+	float m_totalMaximum = 10.0f;
+	float m_maxSpeed     = 0.0f;
+	float m_maxVision    = 0.0f;
+	float m_maxStrength  = 0.0f;
 
-	float m_speed			= 0.0f;
-	float m_vision			= 1.0f;
-	float m_strength		= 1.0f;
+	float m_speed        = 0.0f;
+	float m_vision       = 1.0f;
+	float m_strength     = 1.0f;
 
-	sf::Vector2f m_moveDir	= sf::Vector2f();
+	sf::Vector2f m_moveDir  = sf::Vector2f();
 	sf::Vector2f m_position = sf::Vector2f();
 
-	sf::Color	 m_bodyColor = sf::Color(52, 52, 39);
+	sf::Color    m_bodyColor = sf::Color(52, 52, 39);
 
-	sf::CircleShape 					*m_pBody;
-	std::vector<sf::RectangleShape*>	 m_connectors;
-	std::vector<sf::Sprite*> 			 m_eyes;
+	sf::CircleShape                  *m_pBody;
+	std::vector<sf::RectangleShape*>  m_connectors;
+	std::vector<sf::Sprite*>          m_eyes;
 
 	void DoActions();
 	void Move();
@@ -71,13 +71,13 @@ public:
 
 	void Spawn(float x, float y);
 
-	int 	getEnergy() 	{ return m_energy; }
-	float 	getSpeed() 		{ return m_speed; }
-	float 	getVision() 	{ return m_vision; }
-	float 	getStrength() 	{ return m_strength; }
+	int   getEnergy()   { return m_energy; }
+	float getSpeed()    { return m_speed; }
+	float getVision()   { return m_vision; }
+	float getStrength() { return m_strength; }
 
-	void SetMoveDirX(float x) { m_moveDir.x = x; }
-	void SetMoveDirY(float y) { m_moveDir.y = y; }
+	void SetMoveDirX(float x)         { m_moveDir.x = x; }
+	void SetMoveDirY(float y)         { m_moveDir.y = y; }
 	void SetMoveDir(float x, float y) {m_moveDir.x = x; m_moveDir.y = y; }
 };
 

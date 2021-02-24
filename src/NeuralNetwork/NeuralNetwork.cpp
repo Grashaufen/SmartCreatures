@@ -80,8 +80,8 @@ void NeuralNetwork::CreateFullMesh()
 
 		// connect the output neurons with the hidden neurons
 		for(unsigned int i = 0; i < m_outputNeurons.size(); i++)
-			for(unsigned int j = 0; j < m_hiddenLayers[m_hiddenLayers.size()-1]->size(); j++)
-				m_outputNeurons[i]->AddConnection(new Connection(m_hiddenLayers[m_hiddenLayers.size()-1]->at(j)));
+			for(unsigned int j = 0; j < m_hiddenLayers.back()->size(); j++)
+				m_outputNeurons[i]->AddConnection(new Connection(m_hiddenLayers.back()->at(j)));
 	}
 }
 

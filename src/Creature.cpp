@@ -57,7 +57,7 @@ void Creature::DoActions()
 
 void Creature::Move()
 {
-	// normalize the mvdir vector, so really only the direction takes effect
+	// normalize the mvdir vector, so only the direction takes effect
 	Math::Vector2fNormalize(m_moveDir);
 
 	// update the position of this creature

@@ -8,9 +8,9 @@
 #ifndef NEURALNETWORKCREATURE_H_
 #define NEURALNETWORKCREATURE_H_
 
-#include "NeuralNetwork/NeuralNetwork.h"
+#include "NeuralNetwork/NeuralNetworkMutational.h"
 
-class NeuralNetworkCreature : public NeuralNetwork
+class NeuralNetworkCreature : public NeuralNetworkMutational
 {
 private:
 public:

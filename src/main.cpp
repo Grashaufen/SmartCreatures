@@ -1,14 +1,15 @@
 // MAIN_CPP //
 #include <iostream>
 #include <thread>
+#include <time.h>
 #include <SFML/Graphics.hpp>
 
-#include "NeuralNetworkCreature.h"
+#include "FontLoader.h"
+#include "TextureLoader.h"
 
+#include "NeuralNetworkCreature.h"
 #include "Creature.h"
 #include "CreatureStats.h"
-
-#include <time.h>
 
 int main(int argc, char** argv)
 {
@@ -24,6 +25,10 @@ int main(int argc, char** argv)
 
 	NeuralNetworkCreature nn;
 	nn.Create();
+
+	// initialisation of content
+	FontLoader::Load();
+	TextureLoader::Load();
 
 	while(renderWindow.isOpen())
 	{
