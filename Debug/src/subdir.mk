@@ -4,26 +4,32 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Camera.cpp \
 ../src/Creature.cpp \
 ../src/CreatureStats.cpp \
 ../src/FontLoader.cpp \
 ../src/NeuralNetworkCreature.cpp \
+../src/Simulation.cpp \
 ../src/TextureLoader.cpp \
 ../src/main.cpp 
 
 OBJS += \
+./src/Camera.o \
 ./src/Creature.o \
 ./src/CreatureStats.o \
 ./src/FontLoader.o \
 ./src/NeuralNetworkCreature.o \
+./src/Simulation.o \
 ./src/TextureLoader.o \
 ./src/main.o 
 
 CPP_DEPS += \
+./src/Camera.d \
 ./src/Creature.d \
 ./src/CreatureStats.d \
 ./src/FontLoader.d \
 ./src/NeuralNetworkCreature.d \
+./src/Simulation.d \
 ./src/TextureLoader.d \
 ./src/main.d 
 

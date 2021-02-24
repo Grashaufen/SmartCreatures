@@ -7,11 +7,15 @@
 
 #include "FontLoader.h"
 
-std::string FontLoader::m_fontsFolder = "fonts/";
 
-sf::Font FontLoader::m_arial = sf::Font();
+sf::Font *FontLoader::m_pArial = new sf::Font();
 
 void FontLoader::Load()
 {
-	FontLoader::m_arial.loadFromFile(m_fontsFolder + "arial.ttf");
+	FontLoader::m_pArial->loadFromFile("fonts/arial.ttf");
+}
+
+void FontLoader::Release()
+{
+	if(m_pArial) { delete m_pArial; m_pArial = nullptr; }
 }

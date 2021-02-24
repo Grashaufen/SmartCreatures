@@ -13,13 +13,11 @@
 
 class TextureLoader
 {
-private:
-	static std::string m_texturesFolder;
-
 public:
-	static sf::Texture m_fieldBackground;
+	static sf::Texture *m_pFieldBackground;
 
 	static void Load();
+	static void Release();
 };
 
 #endif /* TEXTURELOADER_H_ */

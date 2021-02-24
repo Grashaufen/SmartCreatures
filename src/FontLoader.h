@@ -13,13 +13,11 @@
 
 class FontLoader
 {
-private:
-	static std::string m_fontsFolder;
-
 public:
-	static sf::Font    m_arial;
+	static sf::Font    *m_pArial;
 
 	static void Load();
+	static void Release();
 };
 
 #endif /* FONTLOADER_H_ */

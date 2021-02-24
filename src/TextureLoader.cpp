@@ -7,12 +7,17 @@
 
 #include "TextureLoader.h"
 
-std::string TextureLoader::m_texturesFolder = "textures/";
 
-sf::Texture TextureLoader::m_fieldBackground = sf::Texture();
+sf::Texture *TextureLoader::m_pFieldBackground = new sf::Texture();
 
 
 void TextureLoader::Load()
 {
-	m_fieldBackground.loadFromFile(m_texturesFolder + "field-background.png");
+	m_pFieldBackground->loadFromFile("textures/field-background.png");
+	m_pFieldBackground->setRepeated(true);
+}
+
+void TextureLoader::Release()
+{
+	if(m_pFieldBackground) { delete m_pFieldBackground; m_pFieldBackground = nullptr; }
 }
