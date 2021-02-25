@@ -15,26 +15,26 @@
 class Simulation
 {
 private:
-	sf::Vector2f m_fieldSize = sf::Vector2f(15000.0f, 10000.0f);
+	sf::RenderWindow *m_pRenderWindow;
 
-	Camera                                 *m_pCamera;
-	// std::vector<sf::PrimitiveCreature*>  m_creatures;
-	// std::vector<Food*>                   m_foods;
+	std::unique_ptr<Camera>                m_pCamera;
+	// std::vector<sf::PrimitiveCreature*> m_creatures;
+	// std::vector<Food*>                  m_foods;
 
-	sf::RectangleShape *m_pBackground;
+	sf::CircleShape m_background;
 
-	unsigned int m_maxFoodQuantity     = 1000.0f;
-	unsigned int m_currentFoodQuantity = 0.0f;
-	unsigned int m_minCreatures        = 50.0f;
+	float        m_fieldRadius;
+	unsigned int m_maxFoodQuantity;
+	unsigned int m_currentFoodQuantity;
+	unsigned int m_minCreatures;
 
 
 public:
-	Simulation();
-	virtual ~Simulation();
+	Simulation(sf::RenderWindow *pRenderWindow, float fieldRadius = 3000.0f, unsigned int maxFoodQuantity = 1000, unsigned int minCreatures = 50);
 
 	void Create();
 	void Update();
-	void Render(sf::RenderWindow *pRenderWindow);
+	void Render();
 };
 
 #endif /* SIMULATION_H_ */

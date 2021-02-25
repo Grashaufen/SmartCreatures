@@ -8,21 +8,21 @@
 #include "Simulation.h"
 #include "TextureLoader.h"
 
-Simulation::Simulation()
+Simulation::Simulation(sf::RenderWindow *pRenderWindow, float fieldRadius, unsigned int maxFoodQuantity, unsigned int minCreatures)
+	: m_pRenderWindow(pRenderWindow),
+	  m_currentFoodQuantity(0)
 {
-	m_pCamera = new Camera();
+	m_fieldRadius     = fieldRadius;
+	m_maxFoodQuantity = maxFoodQuantity;
+	m_minCreatures    = minCreatures;
 
-	m_pBackground = new sf::RectangleShape();
-	m_pBackground->setPosition(0.0f, 0.0f);
-	m_pBackground->setSize(m_fieldSize);
-	m_pBackground->setTextureRect({0, 0, (int)m_fieldSize.x, (int)m_fieldSize.y});
-	m_pBackground->setTexture(TextureLoader::m_pFieldBackground);
-}
+	m_pCamera = std::make_unique<Camera>(pRenderWindow, sf::Vector2f(fieldRadius - 640.0f, fieldRadius - 360.0f));
 
-Simulation::~Simulation()
-{
-	if(m_pBackground) { delete m_pBackground; m_pBackground = nullptr; }
-	if(m_pCamera) { delete m_pCamera; m_pCamera = nullptr; }
+	m_background.setPosition(0.0f, 0.0f);
+	m_background.setRadius(4000.0f);
+	m_background.setPointCount(100);
+	m_background.setTextureRect({0, 0, static_cast<int>(fieldRadius), static_cast<int>(fieldRadius)});
+	m_background.setTexture(TextureLoader::m_pFieldBackground);
 }
 
 void Simulation::Create()
@@ -32,11 +32,11 @@ void Simulation::Create()
 
 void Simulation::Update()
 {
+	m_pCamera->Set();
 	m_pCamera->Update();
 }
 
-void Simulation::Render(sf::RenderWindow *pRenderWindow)
+void Simulation::Render()
 {
-	m_pCamera->Set(pRenderWindow);
-	pRenderWindow->draw(*m_pBackground);
+	m_pRenderWindow->draw(m_background);
 }

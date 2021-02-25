@@ -13,13 +13,22 @@
 class Camera
 {
 private:
-	sf::View m_view;
+	sf::RenderWindow *m_pRenderWindow;
+	sf::View          m_view;
+
+	sf::Vector2f      m_viewport;
+
+	sf::Vector2f      m_mousePositionLastTick;
+	sf::Vector2f      m_mousePositionCurrentTick;
+
+	float             m_moveSpeed;
+	float             m_zoom;
 
 public:
-	Camera();
+	Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint, float moveSpeed = 20.0f);
 
 	void Update();
-	void Set(sf::RenderWindow *pRenderWindow);
+	void Set();
 };
 
 #endif /* CAMERA_H_ */

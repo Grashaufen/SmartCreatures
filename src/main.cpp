@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 
 	sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SmartCreatures", sf::Style::Close);
 
-	Simulation sim;
+	Simulation sim(&renderWindow);
 
 //	std::shared_ptr<Creature> creature(new Creature());
 //	creature->Spawn(400.0f, 300.0f);
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 
 		renderWindow.clear(sf::Color::Black);
 
-		sim.Render(&renderWindow);
+		sim.Render();
 //		creature->Render(&renderWindow);
 //		pStats->Render(&renderWindow);
 		renderWindow.display();
@@ -59,8 +59,8 @@ int main(int argc, char** argv)
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
-	TextureLoader::Release();
 	FontLoader::Release();
+	TextureLoader::Release();
 
 	return 0;
 }

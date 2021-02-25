@@ -13,8 +13,8 @@
  */
 void WorkingNeuron::getNetInput()
 {
-	for(unsigned int i = 0; i < m_connections.size(); i++)
-		m_value += m_connections[i]->getNeuron()->getValue() * m_connections[i]->getWeight();
+	for(auto &connection : m_connections)
+		m_value += connection->getNeuron()->getValue() * connection->getWeight();
 }
 
 /*

@@ -33,12 +33,12 @@ namespace Math
 
 	inline float sigmoid(float value)
 	{
-		return 1 / (1 + (float)exp((double)(-value)));
+		return 1 / (1 + static_cast<float>(exp(static_cast<double>(-value))));
 	}
 
 	inline float frand(float min, float max)
 	{
-		return min + (float)(rand()) / (float)(RAND_MAX/(max-min));
+		return min + static_cast<float>(rand()) / static_cast<float>(RAND_MAX/(max-min));
 	}
 }
 
