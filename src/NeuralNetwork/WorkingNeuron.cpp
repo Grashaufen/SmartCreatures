@@ -8,14 +8,6 @@
 #include "WorkingNeuron.h"
 #include "../Math.h"
 
-WorkingNeuron::~WorkingNeuron()
-{
-	// delete all connections from the heap
-	for(unsigned int i = 0; i < m_connections.size(); i++)
-		if(m_connections[i]) { delete m_connections[i]; m_connections[i] = nullptr;  }
-}
-
-
 /*
  * Create the netinput: return one value calculated from the values received from the connections
  */
@@ -40,12 +32,12 @@ float WorkingNeuron::getValue()
 	return m_value;
 }
 
-void WorkingNeuron::AddConnection(Connection *pConnection)
+void WorkingNeuron::AddConnection(std::unique_ptr<Connection> pConnection)
 {
-	m_connections.push_back(pConnection);
+	m_connections.push_back(std::move(pConnection));
 }
 
-std::vector<Connection*>& WorkingNeuron::getConnections()
+std::vector<std::unique_ptr<Connection>>& WorkingNeuron::getConnections()
 {
 	return m_connections;
 }

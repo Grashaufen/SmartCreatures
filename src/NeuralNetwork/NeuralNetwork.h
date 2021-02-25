@@ -8,6 +8,8 @@
 #ifndef NEURALNETWORK_NEURALNETWORK_H_
 #define NEURALNETWORK_NEURALNETWORK_H_
 
+#include <memory>
+
 #include "InputNeuron.h"
 #include "WorkingNeuron.h"
 #include "Connection.h"
@@ -15,12 +17,12 @@
 class NeuralNetwork
 {
 protected:
-	std::vector<InputNeuron*>                 m_inputNeurons;
-	std::vector<std::vector<WorkingNeuron*>*> m_hiddenLayers;
-	std::vector<WorkingNeuron*>               m_outputNeurons;
+	std::vector<std::unique_ptr<InputNeuron>>                                 m_inputNeurons;
+	std::vector<std::unique_ptr<std::vector<std::unique_ptr<WorkingNeuron>>>> m_hiddenNeurons;
+	std::vector<std::unique_ptr<WorkingNeuron>>                               m_outputNeurons;
 
 public:
-	virtual ~NeuralNetwork();
+	virtual ~NeuralNetwork() { };
 
 	void CreateHiddenLayers(unsigned int amount);
 

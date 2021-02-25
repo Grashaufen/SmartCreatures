@@ -16,19 +16,19 @@
 class WorkingNeuron : public Neuron
 {
 private:
-	std::vector<Connection*>	m_connections;
+	std::vector<std::unique_ptr<Connection>> m_connections;
 
 	void getNetInput();
 	void Activate();
 
 public:
-	virtual ~WorkingNeuron();
+	virtual ~WorkingNeuron() {}
 
 	virtual float getValue() override;
 
-	void AddConnection(Connection *pConnection);
+	void AddConnection(std::unique_ptr<Connection> pConnection);
 
-	std::vector<Connection*>& getConnections();
+	std::vector<std::unique_ptr<Connection>>& getConnections();
 };
 
 #endif /* NEURALNETWORK_WORKINGNEURON_H_ */

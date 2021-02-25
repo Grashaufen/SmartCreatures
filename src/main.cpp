@@ -9,7 +9,7 @@
 
 #include "Simulation.h"
 
-//#include "NeuralNetworkCreature.h"
+#include "NeuralNetworkCreature.h"
 //#include "Creature.h"
 //#include "CreatureStats.h"
 
@@ -27,8 +27,8 @@ int main(int argc, char** argv)
 //	std::unique_ptr<CreatureStats> pStats(new CreatureStats(creature));
 //	pStats->Create();
 //
-//	NeuralNetworkCreature nn;
-//	nn.Create();
+	NeuralNetworkCreature nn;
+	nn.Create();
 
 	// initialisation of content
 	FontLoader::Load();

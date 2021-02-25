@@ -8,6 +8,7 @@
 #ifndef NEURALNETWORK_CONNECTION_H_
 #define NEURALNETWORK_CONNECTION_H_
 
+#include <memory>
 #include "Neuron.h"
 
 class Connection
@@ -22,7 +23,7 @@ public:
 	float getWeight();
 	void SetWeight(float weight);
 
-	Neuron *getNeuron();
+	Neuron* getNeuron() const;
 };
 
 #endif /* NEURALNETWORK_CONNECTION_H_ */
