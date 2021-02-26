@@ -25,7 +25,7 @@ private:
 	float             m_zoom;
 
 public:
-	Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint, float moveSpeed = 20.0f);
+	Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint);
 
 	void Update();
 	void Set();

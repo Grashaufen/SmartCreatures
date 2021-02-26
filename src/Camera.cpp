@@ -13,11 +13,10 @@
  * TODO: Make the window size accessible to this class and implement basic camera functions
  */
 
-Camera::Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint, float moveSpeed)
+Camera::Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint)
 	: m_pRenderWindow(pRenderWindow),
 	  m_mousePositionLastTick(sf::Vector2f()),
 	  m_mousePositionCurrentTick(sf::Vector2f()),
-	  m_moveSpeed(moveSpeed),
 	  m_zoom(1.0f)
 {
 	m_viewport = static_cast<sf::Vector2f>(pRenderWindow->getSize());
@@ -33,10 +32,9 @@ void Camera::Update()
 	m_mousePositionCurrentTick = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*m_pRenderWindow));
 
 	sf::Vector2f mousePosDelta = m_mousePositionLastTick - m_mousePositionCurrentTick;
-	Math::Vector2fNormalize(mousePosDelta);
 
 	if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		m_view.move(m_moveSpeed * m_zoom * mousePosDelta.x, m_moveSpeed * m_zoom * mousePosDelta.y);
+		m_view.move(m_zoom * mousePosDelta.x, m_zoom * mousePosDelta.y);
 
 	// camera zoom
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && m_zoom < 10.0f)
