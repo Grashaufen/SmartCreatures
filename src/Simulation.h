@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Camera.h"
+#include "Food.h"
 
 class Simulation
 {
@@ -20,7 +21,7 @@ private:
 
 	std::unique_ptr<Camera>                m_pCamera;
 	// std::vector<sf::PrimitiveCreature*> m_creatures;
-	// std::vector<Food*>                  m_foods;
+	std::vector<std::unique_ptr<Food>>     m_foods;
 
 	sf::CircleShape m_background;
 
@@ -29,6 +30,9 @@ private:
 	unsigned int m_currentFoodQuantity;
 	unsigned int m_minCreatures;
 
+	void GenerateFood();
+	void AddFood(unsigned int amount);
+	void RemoveFood(unsigned int amount);
 
 public:
 	Simulation(sf::RenderWindow *pRenderWindow, float fieldRadius = 3000.0f, unsigned int maxFoodQuantity = 1000, unsigned int minCreatures = 50);
