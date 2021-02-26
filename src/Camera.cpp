@@ -9,10 +9,6 @@
 #include "Math.h"
 #include <iostream>
 
-/*
- * TODO: Make the window size accessible to this class and implement basic camera functions
- */
-
 Camera::Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint, float zoomSpeed)
 	: m_pRenderWindow(pRenderWindow),
 	  m_mousePositionLastTick(sf::Vector2f()),

@@ -40,6 +40,11 @@ namespace Math
 	{
 		return min + static_cast<float>(rand()) / static_cast<float>(RAND_MAX/(max-min));
 	}
+
+	inline float degreeToRadians(float angle)
+	{
+		return M_PIf32 / 180.0f * angle;
+	}
 }
 
 
