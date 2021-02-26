@@ -21,13 +21,13 @@ private:
 	sf::Vector2f      m_mousePositionLastTick;
 	sf::Vector2f      m_mousePositionCurrentTick;
 
-	float             m_moveSpeed;
+	float             m_zoomSpeed;
 	float             m_zoom;
 
 public:
-	Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint);
+	Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint, float zoomSpeed = 0.01f);
 
-	void Update();
+	void Update(const sf::Clock &clock);
 	void Set();
 };
 

@@ -55,8 +55,6 @@ int main(int argc, char** argv)
 //		creature->Render(&renderWindow);
 //		pStats->Render(&renderWindow);
 		renderWindow.display();
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
 	FontLoader::Release();

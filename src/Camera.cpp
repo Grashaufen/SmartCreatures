@@ -13,19 +13,20 @@
  * TODO: Make the window size accessible to this class and implement basic camera functions
  */
 
-Camera::Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint)
+Camera::Camera(sf::RenderWindow *pRenderWindow, sf::Vector2f spawnPoint, float zoomSpeed)
 	: m_pRenderWindow(pRenderWindow),
 	  m_mousePositionLastTick(sf::Vector2f()),
 	  m_mousePositionCurrentTick(sf::Vector2f()),
 	  m_zoom(1.0f)
 {
-	m_viewport = static_cast<sf::Vector2f>(pRenderWindow->getSize());
+	m_zoomSpeed = zoomSpeed;
 
+	m_viewport = static_cast<sf::Vector2f>(pRenderWindow->getSize());
 	m_view.reset(sf::FloatRect(spawnPoint.x, spawnPoint.y, m_viewport.x, m_viewport.y));
 }
 
 
-void Camera::Update()
+void Camera::Update(const sf::Clock &clock)
 {
 	// camera movement
 	m_mousePositionLastTick = m_mousePositionCurrentTick;
@@ -38,9 +39,9 @@ void Camera::Update()
 
 	// camera zoom
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && m_zoom < 10.0f)
-		m_zoom += 0.1f;
+		m_zoom += m_zoomSpeed * clock.getElapsedTime().asMilliseconds();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && m_zoom > 0.1f)
-		m_zoom -= 0.1f;
+		m_zoom -= m_zoomSpeed * clock.getElapsedTime().asMilliseconds();
 
 	m_view.setSize(m_viewport.x * m_zoom, m_viewport.y * m_zoom);
 }

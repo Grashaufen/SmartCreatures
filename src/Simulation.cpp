@@ -33,7 +33,9 @@ void Simulation::Create()
 void Simulation::Update()
 {
 	m_pCamera->Set();
-	m_pCamera->Update();
+	m_pCamera->Update(m_clock);
+
+	m_clock.restart();
 }
 
 void Simulation::Render()

@@ -16,6 +16,7 @@ class Simulation
 {
 private:
 	sf::RenderWindow *m_pRenderWindow;
+	sf::Clock		  m_clock;
 
 	std::unique_ptr<Camera>                m_pCamera;
 	// std::vector<sf::PrimitiveCreature*> m_creatures;
