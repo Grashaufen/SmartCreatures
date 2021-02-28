@@ -20,19 +20,19 @@ void NeuralNetwork::CreateInputNeurons(unsigned int amount)
 		m_inputNeurons.push_back(std::make_unique<InputNeuron>());
 }
 
-void NeuralNetwork::CreateHiddenNeurons(unsigned int layer, unsigned int amount)
+void NeuralNetwork::CreateHiddenNeurons(unsigned int layer, unsigned int amount, ActivationFunction activationFunction)
 {
 	if(layer > m_hiddenNeurons.size()-1) // the demanded layer does not exist
 		return;
 
 	for(unsigned int i = 0; i < amount; i++)
-		m_hiddenNeurons[layer]->push_back(std::make_unique<WorkingNeuron>());
+		m_hiddenNeurons[layer]->push_back(std::make_unique<WorkingNeuron>(activationFunction));
 }
 
-void NeuralNetwork::CreateOutputNeurons(unsigned int amount)
+void NeuralNetwork::CreateOutputNeurons(unsigned int amount, ActivationFunction activationFunction)
 {
 	for(unsigned int i = 0; i < amount; i++)
-		m_outputNeurons.push_back(std::make_unique<WorkingNeuron>());
+		m_outputNeurons.push_back(std::make_unique<WorkingNeuron>(activationFunction));
 }
 
 void NeuralNetwork::CreateFullMesh()
@@ -64,3 +64,57 @@ void NeuralNetwork::CreateFullMesh()
 	}
 }
 
+void NeuralNetwork::CopyNeuralNetwork(std::vector<std::unique_ptr<InputNeuron>> *pInputNeurons, std::vector<std::unique_ptr<std::vector<std::unique_ptr<WorkingNeuron>>>> *pHiddenNeurons,
+	                                  std::vector<std::unique_ptr<WorkingNeuron>> *pOutputNeurons)
+{
+	// create the input neurons
+	m_inputNeurons.clear();
+	for(unsigned int i = 0; i < pInputNeurons->size(); i++)
+		m_inputNeurons.push_back(std::make_unique<InputNeuron>());
+
+	// create the output neurons
+	m_outputNeurons.clear();
+	for(auto &outputNeuron : *pOutputNeurons)
+		m_outputNeurons.push_back(std::make_unique<WorkingNeuron>(outputNeuron->getActivationFunction()));
+
+	// create the hidden layers and the hidden neurons
+	unsigned int i = 0;
+	m_hiddenNeurons.clear();
+	for(auto &hiddenLayer : *pHiddenNeurons)
+	{
+		m_hiddenNeurons.push_back(std::make_unique<std::vector<std::unique_ptr<WorkingNeuron>>>());
+
+		for(unsigned int j = 0; j < hiddenLayer->size(); j++)
+		{
+			m_hiddenNeurons[i]->push_back(std::make_unique<WorkingNeuron>(hiddenLayer->at(j)->getActivationFunction()));
+
+			// create the connections
+			if(i == 0) // create the first hidden layer with the input neurons
+			{
+				for(unsigned int k = 0; k < m_inputNeurons.size(); k++)
+				{
+					m_hiddenNeurons[i]->at(j)->AddConnection(std::make_unique<Connection>(dynamic_cast<Neuron*>(m_inputNeurons[k].get())));
+					m_hiddenNeurons[i]->at(j)->getConnections().at(k)->SetWeight(hiddenLayer->at(j)->getConnections().at(k)->getWeight());
+				}
+			}
+			else if(i == pHiddenNeurons->size()-1) // connect the output neurons to the last hidden layer
+			{
+				for(unsigned int k = 0; k < m_outputNeurons.size(); k++)
+				{
+					m_outputNeurons[k]->AddConnection(std::make_unique<Connection>(dynamic_cast<Neuron*>(m_hiddenNeurons[i]->at(j).get())));
+					m_outputNeurons[k]->getConnections().at(k)->SetWeight(hiddenLayer->at(j)->getConnections().at(k)->getWeight());
+				}
+			}
+			else // connect the hidden layers
+			{
+				for(unsigned int k = 0; k < m_hiddenNeurons[i-1]->size(); k++)
+				{
+					m_hiddenNeurons[i]->at(j)->AddConnection(std::make_unique<Connection>(dynamic_cast<Neuron*>(m_hiddenNeurons[i-1]->at(k).get())));
+					m_hiddenNeurons[i]->at(j)->getConnections().at(k)->SetWeight(hiddenLayer->at(j)->getConnections().at(k)->getWeight());
+				}
+			}
+		}
+
+		i++;
+	} i = 0;
+}

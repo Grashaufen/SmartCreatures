@@ -15,6 +15,7 @@ class TextureLoader
 {
 public:
 	static sf::Texture *m_pFieldBackground;
+	static sf::Texture *m_pCreatureBody;
 
 	static void Load();
 	static void Release();

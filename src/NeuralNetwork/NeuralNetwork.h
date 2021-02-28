@@ -21,19 +21,21 @@ protected:
 	std::vector<std::unique_ptr<std::vector<std::unique_ptr<WorkingNeuron>>>> m_hiddenNeurons;
 	std::vector<std::unique_ptr<WorkingNeuron>>                               m_outputNeurons;
 
-public:
-	virtual ~NeuralNetwork() { };
-
 	void CreateHiddenLayers(unsigned int amount);
 
 	void CreateInputNeurons(unsigned int amount);
-	void CreateHiddenNeurons(unsigned int layer, unsigned int amount);
-	void CreateOutputNeurons(unsigned int amount);
+	void CreateHiddenNeurons(unsigned int layer, unsigned int amount, ActivationFunction activationFunction);
+	void CreateOutputNeurons(unsigned int amount, ActivationFunction activationFunction);
 
 	void CreateFullMesh();
 
+	void CopyNeuralNetwork(std::vector<std::unique_ptr<InputNeuron>> *pInputNeurons, std::vector<std::unique_ptr<std::vector<std::unique_ptr<WorkingNeuron>>>> *pHiddenNeurons,
+	                       std::vector<std::unique_ptr<WorkingNeuron>> *pOutputNeurons);
+
+public:
+	virtual ~NeuralNetwork() { };
+
 	virtual void Create() = 0;
-	virtual void Update() = 0;
 };
 
 #endif /* NEURALNETWORK_NEURALNETWORK_H_ */

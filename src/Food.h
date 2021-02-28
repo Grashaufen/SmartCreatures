@@ -20,7 +20,7 @@ private:
 	float           m_energy;
 
 public:
-	Food(sf::Vector2f position, float energy = 5.0f, float radius = 4.0f);
+	Food(sf::Vector2f position, float energy = 20.0f);
 	virtual ~Food() { }
 
 	virtual void Update(const sf::Clock &clock) {}

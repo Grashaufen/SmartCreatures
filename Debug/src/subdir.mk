@@ -9,7 +9,7 @@ CPP_SRCS += \
 ../src/CreatureStats.cpp \
 ../src/FontLoader.cpp \
 ../src/Food.cpp \
-../src/NeuralNetworkCreature.cpp \
+../src/PrimitiveCreature.cpp \
 ../src/Simulation.cpp \
 ../src/TextureLoader.cpp \
 ../src/main.cpp 
@@ -20,7 +20,7 @@ OBJS += \
 ./src/CreatureStats.o \
 ./src/FontLoader.o \
 ./src/Food.o \
-./src/NeuralNetworkCreature.o \
+./src/PrimitiveCreature.o \
 ./src/Simulation.o \
 ./src/TextureLoader.o \
 ./src/main.o 
@@ -31,7 +31,7 @@ CPP_DEPS += \
 ./src/CreatureStats.d \
 ./src/FontLoader.d \
 ./src/Food.d \
-./src/NeuralNetworkCreature.d \
+./src/PrimitiveCreature.d \
 ./src/Simulation.d \
 ./src/TextureLoader.d \
 ./src/main.d 

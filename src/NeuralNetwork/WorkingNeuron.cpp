@@ -5,14 +5,21 @@
  *      Author: jannes
  */
 
+#include <iostream>
 #include "WorkingNeuron.h"
 #include "../Math.h"
+
+WorkingNeuron::WorkingNeuron(ActivationFunction activationFunction)
+	: m_activationFunction(activationFunction)
+{ }
 
 /*
  * Create the netinput: return one value calculated from the values received from the connections
  */
 void WorkingNeuron::getNetInput()
 {
+	m_value = 0.0f;
+
 	for(auto &connection : m_connections)
 		m_value += connection->getNeuron()->getValue() * connection->getWeight();
 }
@@ -22,7 +29,18 @@ void WorkingNeuron::getNetInput()
  */
 void WorkingNeuron::Activate()
 {
-	m_value = Math::sigmoid(m_value);
+	switch(m_activationFunction)
+	{
+	case ActivationFunction::ActivationSigmoid:
+		m_value = Math::sigmoid(m_value);
+		break;
+	case ActivationFunction::ActivationHyperbolicTangent:
+		m_value = Math::hyperpolicTangent(m_value);
+		break;
+	case ActivationFunction::ActivationLinear:
+	default:
+		break;
+	}
 }
 
 float WorkingNeuron::getValue()
@@ -35,9 +53,4 @@ float WorkingNeuron::getValue()
 void WorkingNeuron::AddConnection(std::unique_ptr<Connection> pConnection)
 {
 	m_connections.push_back(std::move(pConnection));
-}
-
-std::vector<std::unique_ptr<Connection>>& WorkingNeuron::getConnections()
-{
-	return m_connections;
 }

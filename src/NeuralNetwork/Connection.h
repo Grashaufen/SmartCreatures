@@ -23,6 +23,7 @@ public:
 	float getWeight();
 	void SetWeight(float weight);
 
+	void    setNeuron(Neuron *pNeuron);
 	Neuron* getNeuron() const;
 };
 

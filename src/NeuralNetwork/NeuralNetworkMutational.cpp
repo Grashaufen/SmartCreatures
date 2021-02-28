@@ -8,6 +8,7 @@
 #include "NeuralNetworkMutational.h"
 #include "../Math.h"
 
+NeuralNetworkMutational::~NeuralNetworkMutational() { }
 
 void NeuralNetworkMutational::Mutate(float highest, float lowest)
 {

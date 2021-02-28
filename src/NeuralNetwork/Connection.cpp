@@ -24,6 +24,11 @@ void Connection::SetWeight(float weight)
 	m_weight = weight;
 }
 
+void Connection::setNeuron(Neuron *pNeuron)
+{
+	m_pNeuron = pNeuron;
+}
+
 Neuron* Connection::getNeuron() const
 {
 	return m_pNeuron;

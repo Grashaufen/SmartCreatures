@@ -12,8 +12,9 @@
 
 class NeuralNetworkMutational : public NeuralNetwork
 {
-protected:
 public:
+	virtual ~NeuralNetworkMutational() = 0;
+
 	virtual void Mutate(float highest, float lowest);
 };
 

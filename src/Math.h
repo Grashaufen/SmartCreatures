@@ -36,12 +36,17 @@ namespace Math
 		return 1 / (1 + static_cast<float>(exp(static_cast<double>(-value))));
 	}
 
+	inline float hyperpolicTangent(float value)
+	{
+		return 1.0f - 2.0f / (static_cast<float>(exp(2 * static_cast<double>(value))) + 1.0f);
+	}
+
 	inline float frand(float min, float max)
 	{
 		return min + static_cast<float>(rand()) / static_cast<float>(RAND_MAX/(max-min));
 	}
 
-	inline float degreeToRadians(float angle)
+	inline float degreesToRadians(float angle)
 	{
 		return M_PIf32 / 180.0f * angle;
 	}

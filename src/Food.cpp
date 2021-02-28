@@ -7,16 +7,15 @@
 
 #include "Food.h"
 
-Food::Food(sf::Vector2f position, float energy, float radius)
+Food::Food(sf::Vector2f position, float energy)
+	: m_energy(energy)
 {
-	m_energy = energy;
-	m_radius = radius;
-
+	m_radius = 4.0f;
 	m_bodyColor = sf::Color::Red;
 
 	m_body.setPosition(position);
 	m_body.setFillColor(m_bodyColor);
-	m_body.setRadius(radius);
+	m_body.setRadius(m_radius);
 }
 
 void Food::Render(sf::RenderWindow *pRenderWindow)
