@@ -20,15 +20,15 @@ private:
 	float           m_energy;
 
 public:
-	Food(sf::Vector2f position, float energy = 20.0f);
+	Food(const sf::Vector2f &position, float energy = 20.0f);
 	virtual ~Food() { }
 
 	virtual void Update(const sf::Clock &clock) {}
 	virtual void Render(sf::RenderWindow *pRenderWindow);
 
-	float               getEnergy()   { return m_energy; }
-	float               getRadius()   { return m_radius; }
-	const sf::Vector2f& getPosition() { return m_body.getPosition(); }
+	float        getEnergy()   { return m_energy; }
+	float        getRadius()   { return m_radius; }
+	sf::Vector2f getPosition() { return m_body.getPosition(); }
 };
 
 #endif /* FOOD_H_ */

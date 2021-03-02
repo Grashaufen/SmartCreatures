@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>404</x>
+      <y>480</y>
+      <w>52</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>/Neuron/
+--
+# m_value : float
+--
++ getValue() : float
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>548</y>
+      <w>52</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>InputNeuron
+--
++ getValue() : float
++ setValue() : float
+
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>504</y>
+      <w>36</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>544</y>
+      <w>124</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>WorkingNeuron
+--
+- m_pConnections : Connection*
+--
++ getValue() : float
++ AddConnection(pConnection : Connection*)
++ getConnections() : Connection*
+- getNetInput()
+- activate
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>912</x>
+      <y>180</y>
+      <w>72</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>TextureLoader
+--
+_+ [textures] : sf::Texture*_
+--
+_+ Load()_
+_+ Release()_
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>648</y>
+      <w>248</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>/NeuralNetwork/
+--
+# m_pInputNeurons : InputNeuron*
+# m_pHiddenNeurons : WorkingNeuron**
+# m_pOutputNeurons : WorkingNeuron*
+--
+# CreateHiddenLayers(amount : unsigned int)
+# CreateInputNeurons(amount : unsigned int)
+# CreateHiddenNeurons(layer : unsigned int, amount : unsigned int)
+# CreateOutputNeurons(amount : unsigned int)
+# CreateFullMesh()
+# CopyNeuralNetwork(pInputNeurons : InputNeuron*, pHiddenNeurons : WorkingNeuron**,
+                                         pOutputNeurons : WorkingNeuron*)
+/+ Create()/
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>504</y>
+      <w>12</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>488</x>
+      <y>596</y>
+      <w>64</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m_pHiddenNeurons
+m_pOutputNeurons
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>572</y>
+      <w>60</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m_pInputNeurons
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>496</x>
+      <y>460</y>
+      <w>72</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Connection
+--
+- m_pNeuron : Neuron*
+- m_weight : float
+--
++ getWeight() : float
++ setWeight(weight: float)
++ getNeuron() : Neuron*
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>452</x>
+      <y>488</y>
+      <w>52</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_pNeuron</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>524</x>
+      <y>504</y>
+      <w>56</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_pConnections</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>584</x>
+      <y>564</y>
+      <w>72</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>/NeuralNetworkMutational/
+--
++ Mutate()
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>580</y>
+      <w>12</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>320</x>
+      <y>440</y>
+      <w>372</w>
+      <h>308</h>
+    </coordinates>
+    <panel_attributes>EmptyPackage
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>724</x>
+      <y>276</y>
+      <w>340</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>PrimitiveCreature
+--
+# m_pSimulation : Simulation*
+# m_pNextFood : Food*
+# m_body : sf::CircleShape
+# m_isChild : bool
+# m_radius : float
+# m_visionRadius : float
+# m_pParentInputNeurons : InputNeuron*
+# m_pParentHiddenNeurons : WorkingNeuron**
+# m_pParentOutputNeurons : WorkingNeuron*
+# m_energy : float
+# m_voidDistance : float
+# m_nextFood : float
+# m_isOnFood : bool
+# m_moveDir : sf::Vector2f
+# m_moveSpeed : float
+# m_wantToEat : bool
+# m_wantToReproduce : bool
+# m_energyMalus : float
+# m_reproductionMalus : float
+# m_isAlive() : bool
+--
++ PrimitiveCreature(pSimulation : Simulation*, position : const sf::Vector2f&amp;, isChild : bool = false)
++ PrimitiveCreature(pSimulation : Simulation*, position : const sf::Vector2f&amp;, isChild : bool = false,
+                                    pInputNeurons : InputNeuron*, pHiddenNeurons : WorkingNeuron**, pOutputNeurons : WorkingNeuron*)
++ Create()
++ Update(clock : const sf::Clock&amp;)
++ Render(pRenderWindow : sf::RenderWindow)
++ Mutate()
++ died() : bool
++ isChild() : bool
+# PushNeuralInput()
+# PullNeuralOutput()
+# Eat()
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>632</x>
+      <y>472</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;230.0;10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>336</y>
+      <w>172</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_pParentHiddenNeurons
+m_pParentOutputNeurons
+</panel_attributes>
+    <additional_attributes>410.0;10.0;140.0;10.0;140.0;530.0;10.0;530.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>364</x>
+      <y>300</y>
+      <w>368</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_pParentInputNeurons</panel_attributes>
+    <additional_attributes>900.0;20.0;10.0;20.0;10.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>604</x>
+      <y>88</y>
+      <w>232</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Simulation
+--
+# m_pRenderWindow : sf::RenderWindow
+# m_pClock : sf::Clock
+# m_pCamera : Camera*
+# m_foods : Food*
+# m_creatures : PrimitiveCreature*
+# m_background : sf::CircleShape
+# m_fieldRadius : float
+# m_maxFoodQuantity : unsigned int
+# m_minCreatures : unsigned int
+--
++ Simulation(pRenderWindow : sf::RenderWindow, fieldRadius : float = 1000.0f,
+                       maxFoodQuantity : unsigned int = 2000, minCreatures : unsigned int = 40)
++ Create()
++ Update()
++ Render()
+# GenerateFood()
+# AddFood(amount : unsigned int)
+# RemoveFood(amount : unsigned int)
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>792</x>
+      <y>212</y>
+      <w>52</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_pSimulation</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>180</y>
+      <w>160</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Food
+--
+# m_body : sf::CircleShape
+# m_bodyColor : sf::Color
+# m_radius : float
+# m_energy : float
+--
++ Food(position : const sf::vector2f&amp;, energy : float = 20.0f)
++ ~Food()
++ Update(clock : const sf::Clock&amp;)
++ Render(pRenderWindow : sf::RenderWindow*)
++ getEnergy() : float
++ getRadius() : float
++ getPosition() : sf::vector2f
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>832</x>
+      <y>188</y>
+      <w>88</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>212</y>
+      <w>12</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>744</x>
+      <y>212</y>
+      <w>44</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_creatures</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>912</x>
+      <y>128</y>
+      <w>72</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>FontLoader
+--
+_+ [fonts] : sf::Font*_
+--
+_+ Load()_
+_+ Release()_
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>248</x>
+      <y>36</y>
+      <w>272</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Camera
+--
+- m_pRenderWindow : sf::RenderWindow*
+- m_view : sf::View
+- m_viewport : sf::Vector2f
+- m_mousePositionLastTick : sf::Vector2f
+- m_mousePositionCurrentTick : sf::vector2f
+- m_zoomSpeed : float
+- m_zoom : float
+--
++ Camera(pRenderWindow : sf::RenderWindow*, spawnPoint : sf::Vector2f, zoomSpeed : float = 0.01f)
++ Update(clock : const sf::Clock&amp;)
++ Set()
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>516</x>
+      <y>92</y>
+      <w>96</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_pCamera</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>536</x>
+      <y>192</y>
+      <w>76</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_foods</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>536</x>
+      <y>276</y>
+      <w>196</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m_pNextFood</panel_attributes>
+    <additional_attributes>470.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>

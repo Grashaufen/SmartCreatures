@@ -7,7 +7,7 @@
 
 #include "Food.h"
 
-Food::Food(sf::Vector2f position, float energy)
+Food::Food(const sf::Vector2f &position, float energy)
 	: m_energy(energy)
 {
 	m_radius = 4.0f;
